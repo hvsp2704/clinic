@@ -1,0 +1,25 @@
+{%extends "clinic/base.html" %}
+{%block content%}
+
+    <br>
+    <br>
+    <h1>Doctor's Portal</h1>
+    <br>
+    <br>
+    <h3>Search Appointments by Patient ID</h3>
+    <br>
+
+    <form method="GET" action="/doctor/">
+    <input type="text" name="patient_id" placeholder="Enter patient ID">
+    <button type="submit">Search</button>
+    </form>
+
+    {% if searched_events %}
+          <h1>Appointments for Patient with ID {{ patient_id }}</h1>
+          <ul>
+            {% for event in searched_events %}
+                    <li>{{ event.time }} - {{ appointment.doctor.name }}<button type="button">open</button></li>
+            {% endfor %}
+          </ul>
+    {% endif %}
+{%endblock content%}
